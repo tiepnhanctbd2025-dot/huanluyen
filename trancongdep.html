@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VDC SAFETY - DASHBOARD GIẢNG VIÊN</title>
+    <style>
+        /* Xóa bỏ khoảng trắng thừa và làm đẹp giao diện bao ngoài */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Container chứa Iframe */
+        .iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Thanh trạng thái giả lập phía trên (tùy chọn để tăng nhận diện thương hiệu) */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #1a73e8, #34a853);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <div class="iframe-container">
+        <iframe 
+            src="https://script.google.com/macros/s/AKfycbzBQSI66hQ8tJ05MD9kQ949YURDzy1Ub2Kicg5fKVHAMnBpG5srp6pxmSHAftv-jqQtiw/exec?p=giangvien" 
+            allow="geolocation; camera; microphone"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <script>
+        // Tự động kiểm tra quyền GPS khi vào trang trên GitHub
+        window.onload = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function() {}, function(err) {
+                    console.warn("Vui lòng cho phép quyền truy cập vị trí để chốt GPS.");
+                });
+            }
+        };
+    </script>
+</body>
+</html>
